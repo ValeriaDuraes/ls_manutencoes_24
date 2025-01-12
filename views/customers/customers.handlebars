@@ -1,0 +1,12 @@
+<div class="customer-container">
+  <h1>Todos os clientes</h1>
+  {{#each customers}}
+    <div class="customer-card">
+      <p>Cód. Cliente:{{id}}</p>
+      <p>Nome:{{name}}</p>
+      <p>Telefone:{{phone}}</p>
+      <p>Endereço:{{address}}</p>
+      <p>E-mail:{{email}}</p>
+    </div>
+  {{/each}}
+</div>

@@ -1,0 +1,106 @@
+<div class="machine-form-container">
+  <a href="/machines/dashboard"> &larr; Voltar</a>
+  <h1>Incluir O.S </h1>
+  <form action="/machines/add" method="POST">
+    <div class="form-control">
+      <label for="customer_id">Selecione o cliente (obrigatório):</label>
+      <select name="customer_id">
+        <option value="" disabled selected>Selecione o cliente</option>
+        {{#each customers}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+        <option value=""></option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="m_name">Máquina (obrigatório):</label>
+      <input type="text" name="m_name" placeholder="Insira a máquina... ex: Martelete">
+    </div>
+
+    <div class="form-control">
+      <label for="m_model">Modelo:</label>
+      <input type="text" name="m_model" placeholder="Insira o modelo... ex: HR-2470">
+    </div>
+
+    <div class="form-control">
+      <label for="voltage">Voltagem (obrigatório):</label>
+      <input type="number" name="voltage" placeholder="Insira a voltagem... ex: 127v">
+    </div>
+
+    <div class="form-control">
+      <label for="brand">Marca:</label>
+      <input type="text" name="brand" placeholder="Insira a marca... ex: Makita">
+    </div>
+
+    <div class="form-control">
+      <label for="serial_number">Nº de série:</label>
+      <input type="number" name="serial_number" placeholder="Insira o número de série... ex: 5165.565.558">
+    </div>
+
+    <div class="form-control">
+      <label for="acessories">Acessórios:</label>
+      <input type="text" name="acessories" placeholder="Insira os acessórios... ex: Com punho.">
+    </div>
+
+    <div class="form-control">
+      <label for="observations">Observações:</label>
+      <input type="text" name="observations" placeholder="Insira observações... ex: Saindo fumaça.">
+    </div>
+
+    <div class="form-control">
+      <label for="service_cost" hidden>Orçamento:</label>
+      <input type="number" name="service_cost" placeholder="Valor do orçamento R$" hidden>
+    </div>
+
+    <div class="form-control" hidden>
+      <label for="parts" hidden>Peças:</label>
+      <input type="text" name="parts" placeholder="Peças que serão trocadas... ex: engrenagem, rolamento, graxa..." hidden>
+    </div>
+
+    <div class="form-control" hidden>
+      <label for="status_budget" hidden>Status do Orçamento:</label>
+      <select name="status_budget" id="status_budget" hidden>
+        <option value="pending">Pendente</option>
+        <option value="approved">Aprovado</option>
+        <option value="reject">Rejeitado</option>
+      </select>
+    </div>
+
+    <div class="form-control" hidden>
+      <label for="status_delivery" hidden>Status da Entrega:</label>
+      <select name="status_delivery" id="status_delivery" hidden>
+        <option value="not_delivered">Máquina na loja</option>
+        <option value="delivered">Máquina entrega ao cliente</option>
+      </select>
+    </div>
+
+    <div class="form-control" hidden>
+      <label for="status_payment" hidden>Status do Pagamento:</label>
+      <select name="status_payment" id="status_payment" hidden>
+        <option value="pending">Pendente (Máquina em manutenção)</option>
+        <option value="paid">Pago</option>
+        <option value="unpaid">Não pago</option>
+      </select>
+    </div>
+    
+    <div class="form-control" hidden>
+      <label for="payment_method" hidden>Método de Pagamento:</label>
+      <select name="payment_method" id="payment_method" hidden>
+        <option value="cash">Dinheiro</option>
+        <option value="credit_card">Cartão de Crédito</option>
+        <option value="debit_card">Cartão de Débito</option>
+        <option value="transfer">Transferência</option>
+        <option value="bank_slip">Boleto</option>
+        <option value="other">Outros</option>
+      </select>
+    </div>
+
+    <div class="form-control" hidden>
+      <label for="service_date" hidden>Data conclusão do serviço:</label>
+      <input type="date" name="service_date" placeholder="Selecione a data do serviço" min="{{current_date}}" hidden>
+    </div>
+
+    <input type="submit" class="btn" value="SALVAR">
+  </form>
+</div>

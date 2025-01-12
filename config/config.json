@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "lsmanutencoes_24",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": 5433
+  }
+}

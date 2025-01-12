@@ -1,0 +1,109 @@
+<div class="machine-form-container">
+  <a href="/machines/allmachines"> &larr; Voltar</a>
+  <h1>Editar O.S</h1>
+  <form action="/machines/edit/{{machine.id}}" method="POST">
+    <div class="form-control">
+      <label for="customer_id">Selecione o cliente (obrigatório):</label>
+      <select name="customer_id">
+        <option value="" disabled selected>Selecione o cliente</option>
+        {{#each customers}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+        <option value=""></option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="m_name">Máquina (obrigatório):</label>
+      <input type="text" id="m_name" name="m_name" value="{{machine.m_name}}" required>
+    </div>
+
+    <div class="form-control">
+      <label for="m_model">Modelo:</label>
+      <input type="text" id="m_model" name="m_model" value="{{machine.m_model}}">
+    </div>
+
+    <div class="form-control">
+      <label for="voltage">Voltagem (obrigatório):</label>
+      <input type="number" id="voltage" name="voltage" value="{{machine.voltage}}" required>
+    </div>
+
+    <div class="form-control">
+      <label for="brand">Marca:</label>
+      <input type="text" id="brand" name="brand" value="{{machine.brand}}">
+    </div>
+
+    <div class="form-control">
+      <label for="serial_number">Nº de série:</label>
+      <input type="number" id="serial_number" name="serial_number" value="{{machine.serial_number}}">
+    </div>
+
+    <div class="form-control">
+      <label for="acessories">Acessórios:</label>
+      <input type="text" id="acessories" name="acessories" value="{{machine.acessories}}">
+    </div>
+
+    <div class="form-control">
+      <label for="observations">Observações:</label>
+      <input type="text" id="observations" name="observations" value="{{machine.observations}}">
+    </div>
+
+    <div class="form-control">
+      <label for="service_cost">Orçamento:</label>
+      <input type="number" id="service_cost" name="service_cost" value="{{machine.service_cost}}" placeholder="Valor do orçamento R$">
+    </div>
+
+    <div class="form-control">
+      <label for="parts">Peças:</label>
+      <input type="text" id="parts" name="parts" value="{{machine.parts}}"
+      placeholder="Peças que serão trocadas... ex: engrenagem, rolamento, graxa...">
+    </div>
+
+    {{!-- Parei aqui --}}
+    
+    <div class="form-control">
+      <label for="status_budget">Status do Orçamento:</label>
+      <select name="status_budget" id="status_budget">
+        <option value="pending" {{#ifEquals machine.status_budget "pending"}}selected{{/ifEquals}}>Pendente</option>
+        <option value="approved" {{#ifEquals machine.status_budget "approved"}}selected{{/ifEquals}}>Aprovado</option>
+        <option value="reject" {{#ifEquals machine.status_budget "reject"}}selected{{/ifEquals}}>Rejeitado</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="status_delivery">Status da Entrega:</label>
+      <select name="status_delivery" id="status_delivery">
+        <option value="not_delivered">Máquina na loja</option>
+        <option value="delivered">Máquina entrega ao cliente</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="status_payment">Status do Pagamento:</label>
+      <select name="status_payment" id="status_payment">
+        <option value="pending">Pendente (Máquina em manutenção)</option>
+        <option value="paid">Pago</option>
+        <option value="unpaid">Não pago</option>
+      </select>
+    </div>
+    
+    <div class="form-control">
+      <label for="payment_method">Método de Pagamento:</label>
+      <select name="payment_method" id="payment_method">
+        <option value="cash">Dinheiro</option>
+        <option value="credit_card">Cartão de Crédito</option>
+        <option value="debit_card">Cartão de Débito</option>
+        <option value="transfer">Transferência</option>
+        <option value="bank_slip">Boleto</option>
+        <option value="other">Outros</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="service_date">Data conclusão do serviço:</label>
+      <input type="date" name="service_date" placeholder="Selecione a data do serviço" min="{{current_date}}" value="{{machine.service_date}}">
+    </div>
+
+    <input type="submit" class="btn" value="SALVAR">
+  </form>
+</div>

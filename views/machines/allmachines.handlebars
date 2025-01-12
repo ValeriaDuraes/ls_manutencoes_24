@@ -1,0 +1,55 @@
+<div class="machine-container">
+  <a href="/machines/dashboard"> &larr; Voltar</a>
+  <h1>Todas as O.Ss</h1>
+  <h3>Filtrar O.S</h3>
+  <form action="/machines/filter" method="get">
+    <input type="text" name="customer_name" placeholder="Nome do cliente">
+    <input type="text" name="customer_id" placeholder="Cód. do cliente">
+    <input type="text" name="phone" placeholder="Telefone do cliente">
+    <input type="text" name="machine_id" placeholder="Código da O.S">
+    <input type="text" name="machine_model" placeholder="Marca da máquina">
+    <input type="submit" class="btn" value="BUSCAR">
+  </form>
+  {{#each machines}}
+    <div class="machine-card">
+      <ul>
+        <li>Código do Cliente: <span>{{customer.id}}</span></li>
+        <li>Cliente: <span>{{customer.name}}</span></li>
+        <li>Tel/Cel: <span>{{customer.phone}}</span></li>
+        <li>Cód. da O.S: <span>{{id}}</span></li>
+        <li>Máquina: <span>{{m_name}}</span></li>
+        <li>Modelo: <span>{{m_model}}</span></li>
+        <li>Voltagem: <span>{{voltage}}</span></li>
+        <li>Marca: <span>{{brand}}</span></li>
+        <li>Nº de série:<span>{{serial_number}}</span></li>
+        <li>Acessórios: <span>{{acessories}}</span></li>
+        <li>Observações:<span>{{observations}}</span></li>
+        <li>Orçamento: <span>{{service_cost}}</span></li>
+        <li>Peças: <span>{{parts}}</span></li>
+        <li>Status do Orçamento: <span>{{status_budget}}</span></li>
+        <li>Status da Entrega: <span>{{status_delivery}}</span></li>
+        <li>Status do Pagamento: <span>{{status_payment}}</span></li>
+        <li>Meio de Pagamento: <span>{{payment_method}}</span></li>
+        <li>Serviço Executado: <span>{{service_date}}</span></li>
+      </ul>
+
+      <!-- Ações: Edição e Exclusão -->
+      <div class="actions">
+        <!-- Link de Edição -->
+        <a href="/machines/edit/{{id}}" class="action-btn edit" title="Editar O.S">
+          {{!-- <i class="fa fa-edit"></i> --}}
+          <i class="fa-regular fa-pen-to-square"></i>
+        </a>
+
+        <!-- Formulário de Exclusão -->
+        <form action="/machines/delete/{{id}}" method="POST" style="display:inline;">
+          <button type="submit" class="action-btn delete" title="Excluir O.S">
+            {{!-- <i class="fa fa-trash"></i> --}}
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  {{/each}}
+</div>
